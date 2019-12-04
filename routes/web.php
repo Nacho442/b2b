@@ -29,9 +29,6 @@ Route::put('users-password-nuevo/{id}', 'UsuariosController@passwordnuevo')->nam
 Route::resource('puntosventa', 'PuntosVentaController')->middleware('auth');
 Route::get('puntosventa/baja/{id}', 'PuntosVentaController@baja')->middleware('auth');
 
-Route::resource('topproductos', 'TopProductosController')->middleware('auth');
-Route::get('topproductos/baja/{id}', 'TopProductosController@baja')->middleware('auth');
-
 Route::resource('productos', 'ProductosController')->middleware('auth');
 Route::get('productos/baja/{id}', 'ProductosController@baja')->middleware('auth');
 
@@ -40,6 +37,4 @@ Route::resource('fotos-productos', 'FotosProductosController')->middleware('auth
 Route::resource('universidades', 'UniversidadesController')->middleware('auth');
 Route::get('universidades/baja/{id}', 'UniversidadesController@baja')->middleware('auth');
 
-Route::resource('promociones', 'PromocionesController')->middleware('auth');
-Route::get('promociones/baja/{id}', 'PromocionesController@baja')->middleware('auth');
 

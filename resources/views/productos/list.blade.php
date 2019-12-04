@@ -17,57 +17,57 @@
                     <div class="card">
                         <div class="card-header card-header-icon card-header-warning">
                             <div class="card-icon">
-                                <i class="material-icons">work</i>
+                                <i class="material-icons">restaurant</i>
                             </div>
-                            <h4 class="card-title ">EMPRESAS</h4>
+                            <h4 class="card-title ">PRODUCTOS</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                        <th>Nombre de empresa</th>
-                                        <th>Dirección</th>
-                                        <th>Telefono</th>
-                                        <th>Descripcion</th>
+                                        <th>Folio</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Descripción</th>
+                                        <th>Acciones</th>
                                     </thead>
                                     <tbody>
-                                        @if($universidades->count())  
-                                        @foreach($universidades as $universidad) 
+                                        @if($productos->count())  
+                                        @foreach($productos as $producto) 
                                         <tr>
-                                            <td>{{$universidad->nombre}}</td>
-                                            <td>{{$universidad->calle}} #{{$universidad->numero}}, {{$universidad->colonia}}, {{$universidad->ciudad}}, {{$universidad->esatdo}}</td>
-                                            <td>{{$universidad->telefono}}</td>
-                                            <td>{{$universidad->descripcion}}</td>
+                                            <td>{{$producto->folio}}</td>
+                                            <td>{{$producto->nombre}}</td>
+                                            <td>{{$producto->precio}}</td>
+                                            <td>{{$producto->descripcion}}</td>
                                             <td>
-                                                <a href="{{action('UniversidadesController@show', $universidad->id)}}">
+                                                <a href="{{action('ProductosController@show', $producto->id)}}">
                                                 <button class="btn btn-warning btn-sm"><i class="material-icons">remove_red_eye</i>
                                                 </button>
                                             </a>
-                                            <a href="{{action('UniversidadesController@edit', $universidad->id)}}">
+                                            @if(Auth::user()->id == $producto->id_usuario)
+                                            <a href="{{action('ProductosController@edit', $producto->id)}}">
                                                 <button class="btn btn-warning btn-sm"><i class="material-icons">edit</i></button>
                                             </a>
-
-                                            <a href="{{action('UniversidadesController@baja', $universidad->id)}}">
-                                                <button class="btn btn-danger btn-sm"><i class="material-icons">clear</i></button>
-                                            </a>
+                                                <button class="btn btn-danger btn-sm" onclick="baja({{$producto->id}})"><i class="material-icons">clear</i></button>
+                                            @endif
                                             </td>
                                         </tr>
                                         @endforeach 
                                         @else
                                         <tr>
-                                            <td colspan="3">No hay registro !!</td>
+                                            <td colspan="4">No hay registro !!</td>
                                         </tr>
                                         @endif
                                     </tbody>
                                 </table>
-                                {{ $universidades->render() }}
+                                {{ $productos->render() }}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <a href="{{ route('universidades.create') }}">
-                        <button class="btn btn-warning"><i class="material-icons">add</i>Agregar Empresa</button>
+                    <a href="{{ route('productos.create') }}">
+                        <button class="btn btn-warning"><i class="material-icons">add</i>Agregar producto</button>
                     </a>
                 </div>
             </div>
@@ -79,7 +79,7 @@
 <script type="text/javascript">
     function baja(id){
         $.ajax({
-                url: '/universidades/baja/'+id,
+                url: '/productos/baja/'+id,
                 type: 'GET',
                 success: function (proy) {
                     location.reload();

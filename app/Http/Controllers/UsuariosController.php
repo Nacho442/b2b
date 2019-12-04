@@ -53,9 +53,9 @@ class UsuariosController extends Controller
         if ($request->hasFile('foto')) {
             //dd('entro if');
             $file = $request->file('foto');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/fotosusers/'.$request->folio.'/', $name);
-            $file_name = $name;
+            $name = $file->getClientOriginalName();
+            $file->move(public_path().'/fotosusers/'.$request->email.'/', $name);
+            $file_name ='fotosusers/'.$request->email.'/'.$name;
         }
         $data = User::insert(['folio' => $request->folio,
             'name' => $request->name,

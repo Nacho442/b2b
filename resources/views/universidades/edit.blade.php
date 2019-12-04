@@ -73,6 +73,16 @@
                                             <input type="text" class="form-control" placeholder="Estado" value="{{$universidad->estado}}" id="estado" name="estado">
                                         </div>
                                     </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Descripcion" value="{{$universidad->descripcion}}" id="descripcion" name="descripcion">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Horario" value="{{$universidad->horarop}}" id="horario" name="horario">
+                                        </div>
+                                    </div>
                                 </div>
                             </div> 
                         </div>

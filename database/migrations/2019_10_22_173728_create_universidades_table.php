@@ -16,14 +16,17 @@ class CreateUniversidadesTable extends Migration
         Schema::create('empresa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->nullable();
+            $table->string('foto')->nullable();
             $table->string('calle')->nullable();
             $table->string('numero')->nullable();
             $table->string('colonia')->nullable();
             $table->string('ciudad')->nullable();
             $table->string('estado')->nullable();
-            $table->integer('activo')->nullable();
             $table->string('telefono')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('descripcion');
+            $table->enum('categoria',['Salud y Belleza','Ropa y Accesorios','Restaurant','Automiviles','Bares y Antros','Eventos']);
+            $table->string('horario');
+            $table->integer('activo')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +38,6 @@ class CreateUniversidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universidades');
+        Schema::dropIfExists('empresa');
     }
 }

@@ -35,14 +35,9 @@ class ProductosController extends Controller
     public function create()
     {
         //
-        $folio=Producto::orderBy('folio','DESC')->first();
-        if (empty($folio)) {
-            $fo = '1001';
-        }else{
-        $fo = (int)$folio->folio + 1;
-        }
+        
         $universidades = Universidad::where('activo',1)->get();
-        return view('productos.create',compact('fo','universidades'));
+        return view('productos.create',compact('universidades'));
     }
 
     /**
@@ -60,31 +55,25 @@ class ProductosController extends Controller
             //dd('entro if');
             $file = $request->file('foto');
             $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/fotosproductos/'.$request->folio.'/', $name);
-            $file_name = $name;
+            $file->move(public_path().'/fotosproductos/'.$request->id_neg.'/', $name);
+            $file_name = public_path().'/fotosproductos/'.$request->id_neg.'/'.$name;
         }
-        $id_producto = Producto::insertGetId(['folio' => $request->folio,
+        $id_producto = Producto::insertGetId([
             'nombre' => $request->nombre,
             'precio' => $request->precio,
             'descripcion' => $request->descripcion,
             'categoria' => $request->categoria,
-            'id_universidad' => $request->id_universidad,
-            'id_usuario' => Auth::user()->id,
+            'id_neg' => $request->id_universidad,
+            'id_user' => Auth::user()->id,
             'activo' => 1,
             'created_at' => $date, 
-            'updated_at' => $date]);
-
-        $data = \DB::table('fotos_productos')->insert([
+            'updated_at' => $date,
             'foto' => $file_name,
-            'estatus' => 'Pendiente',
-            'id_producto' => $id_producto,
-            'id_usuario' => Auth::user()->id,
-            'activo' => 1,
-            'created_at' => $date, 
-            'updated_at' => $date
-            ]);
+            'direccion' => $request->direccion]);
+            
 
-        if($data == true){
+
+        if($id_producto == true){
             return redirect()->route('productos.index');
         }
     }

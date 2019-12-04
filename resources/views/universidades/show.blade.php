@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-header card-header-icon card-header-warning">
                             <div class="card-icon">
-                                <i class="material-icons">work</i>
+                                <img src="{{ asset("$universidad->foto") }}" class="logorocio"/>
                             </div>
                             <h4 class="card-title ">DETALLE EMPRESA</h4>
                         </div>
@@ -36,6 +36,14 @@
                                         <tr>
                                             <td style="font-weight: bold;">Direccion</td>
                                             <td>{{$universidad->calle}} #{{$universidad->numero}}, {{$universidad->colonia}}, {{$universidad->ciudad}}, {{$universidad->esatdo}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Descripcion</td>
+                                            <td>{{$universidad->descripcion}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Horario</td>
+                                            <td>{{$universidad->horario}}</td>
                                         </tr>
                                     </tbody>
                                 </table>

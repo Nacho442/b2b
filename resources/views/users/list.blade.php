@@ -17,24 +17,24 @@
                     <div class="card">
                         <div class="card-header card-header-icon card-header-warning">
                             <div class="card-icon">
-                                <i class="material-icons">work</i>
+                                <i class="material-icons">person</i>
                             </div>
-                            <h4 class="card-title ">EMPRESAS</h4>
+                            <h4 class="card-title ">USUARIOS</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <th>Nombre</th>
-                                        <th>Direccion</th>
-                                        <th>Telefono</th>
+                                        <th>Correo</th>
+                                        <th>Rol</th>
                                     </thead>
                                     <tbody>
                                         @if($usuarios->count())  
                                         @foreach($usuarios as $usuario) 
                                         <tr>
-                                            <td>{{$usuario->folio}}</td>
-                                            <td>{{$usuario->name}} {{$usuario->a_paterno}} {{$usuario->a_materno}}</td>
+                                            <td>{{$usuario->name}}</td>
+                                            <td>{{$usuario->email}} {{$usuario->a_paterno}} {{$usuario->a_materno}}</td>
                                             <td>{{$usuario->rol}}</td>
                                             <td>
                                                 <a href="{{action('UsuariosController@show', $usuario->id)}}">
@@ -44,7 +44,10 @@
                                             <a href="{{action('UsuariosController@edit', $usuario->id)}}">
                                                 <button class="btn btn-warning btn-sm"><i class="material-icons">edit</i></button>
                                             </a>
-                                                <button class="btn btn-danger btn-sm" onclick="baja({{$usuario->id}})"><i class="material-icons">clear</i></button>
+
+                                             <a href="{{action('UsuariosController@baja', $usuario->id)}}">
+                                                <button class="btn btn-danger btn-sm"><i class="material-icons">clear</i></button>
+                                            </a>
                                             </td>
                                         </tr>
                                         @endforeach 

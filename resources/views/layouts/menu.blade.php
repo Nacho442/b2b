@@ -33,10 +33,18 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('universidades.index') }}">
-                    <i class="material-icons text-success" style="color: #EFD245;">work</i>
+                    <i class="material-icons text-success" >work</i>
                     <p> Empresas </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('users.index') }}">
+                    <i class="material-icons text-success" ;">person</i>
+                    <p> Usuarios </p>
+                </a>
+            </li>
+
             
             <!--<li class="nav-item">
                 <a class="nav-link" href="{{ route('puntosventa.index') }}">

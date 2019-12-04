@@ -17,7 +17,11 @@
                     <div class="card">
                         <div class="card-header card-header-icon card-header-warning">
                             <div class="card-icon">
-                                <i class="material-icons">person</i>
+                                @if(Auth::user()->foto != null)
+                                    <img src="{{ url('fotosusers/'.Auth::user()->id, Auth::user()->foto) }}" class="logorocio"/>
+                                @else
+                                    <img src="{{ asset("$usuario->foto") }}" class="logorocio"/>
+                                @endif
                             </div>
                             <h4 class="card-title ">DETALLE USUARIO</h4>
                         </div>
@@ -25,10 +29,6 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <tbody>
-                                        <tr>
-                                            <td style="font-weight: bold;">Folio</td>
-                                            <td>{{$usuario->folio}}</td>
-                                        </tr>
                                         <tr>
                                             <td style="font-weight: bold;">Nombre</td>
                                             <td>{{$usuario->name}} {{$usuario->a_paterno}} {{$usuario->a_materno}}</td>
@@ -41,12 +41,14 @@
                                             <td style="font-weight: bold;">Rol</td>
                                             <td>{{$usuario->rol}}</td>
                                         </tr>
-                                        @if($universidad != null)
                                         <tr>
-                                            <td style="font-weight: bold;">Universidad</td>
-                                            <td>{{$universidad->nombre}}</td>
+                                            <td style="font-weight: bold;">Fecha de creacion</td>
+                                            <td>{{$usuario->created_at}}</td>
                                         </tr>
-                                        @endif
+                                        <tr>
+                                            <td style="font-weight: bold;">Ultima fecha de modificacion</td>
+                                            <td>{{$usuario->updated_at}}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

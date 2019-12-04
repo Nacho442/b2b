@@ -27,16 +27,11 @@
                         <div class="card ">
                             <div class="card-header card-header-warning card-header-text">
                                 <div class="card-text">
-                                    <h4 class="card-title">AGREGAR EMPRESA</h4>
+                                    <h4 class="card-title">AGREGAR USUARIO</h4>
                                 </div>
                             </div>
                             <div class="card-body ">
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="number" class="form-control" placeholder="Folio" value="{{$fo}}" id="folio" name="folio" readonly>
-                                        </div>
-                                    </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Nombre" id="name" name="name">
@@ -47,13 +42,13 @@
                                             <input type="text" class="form-control" placeholder="A. Paterno" id="a_paterno" name="a_paterno">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="A. Materno" id="a_materno" name="a_materno">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Correo" id="email" name="email">
@@ -64,8 +59,6 @@
                                             <input type="password" class="form-control" placeholder="Password" id="password" name="password">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <select class="form-control" name="rol" id="rol">
@@ -75,10 +68,12 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <select class="form-control" name="id_universidad" id="id_universidad">
-                                                <option value="">Universiad</option>
+                                                <option value="">Empresa</option>
                                                 @foreach($universidades as $universidad)
                                                     <option value="{{ $universidad->id }}">{{ $universidad->nombre }}</option>
                                                 @endforeach

@@ -71,6 +71,26 @@
                                             <input type="text" class="form-control" placeholder="Estado" id="estado" name="estado">
                                         </div>
                                     </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Descripcion" id="descripcion" name="descripcion">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Horario" id="horario" name="horario">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div id="field_image" class="form-group bmd-form-group">
+                                            <label id="label_foto" for="foto" class="my-btn"></label>
+                                            <label for="foto" class="btn btn-warning">
+                                                <i class="material-icons">photo_camera</i> Foto
+                                            </label>
+                                            <input class="form-control" type="file" name="foto" id="foto">
+                                        </div>
+                                    </div>
                                 </div>
                             </div> 
                         </div>

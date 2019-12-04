@@ -42,6 +42,10 @@ class UniversidadesController extends Controller
     {
         //
         $date = date('Y-m-d H:i:s');
+        $file = $request->file('foto');
+        $name = $file->getClientOriginalName();
+        $file->move(public_path().'/fotosproductos/'.$request->id.'/', $name);
+        $file_name = 'fotosproductos/'.$request->id.'/'.$name;
         $data = Universidad::insert([
             'nombre' => $request->nombre,
             'calle' => $request->calle,
@@ -50,9 +54,12 @@ class UniversidadesController extends Controller
             'ciudad' => $request->ciudad,
             'estado' => $request->estado,
             'activo' => 1,
+            'foto' => $file_name,
             'telefono' => $request->telefono,
             'created_at' => $date, 
-            'updated_at' => $date]);
+            'updated_at' => $date,
+            'descripcion'=> $request->descripcion,
+            'horario' => $request->horario]);
 
         if($data == true){
             return redirect()->route('universidades.index');
@@ -102,6 +109,7 @@ class UniversidadesController extends Controller
             'colonia' => $request->colonia,
             'ciudad' => $request->ciudad,
             'estado' => $request->estado,
+            'updated_at' => $date,
         ]);
         if($data == true){
             return redirect()->route('universidades.index');
@@ -127,6 +135,9 @@ class UniversidadesController extends Controller
 
         if($data == true){
             return redirect()->route('universidades.index');
+        }
+        else{
+            return redirect()->route('dashboard.index');
         }
     }
 }

@@ -8,5 +8,5 @@ class Universidad extends Model
 {
     //    
     protected $table = 'empresa';
-    protected $fillable = [	'id', 'nombre', 'calle', 'numero', 'colinia', 'ciudad', 'estado','activo','telefono'];
+    protected $fillable = [	'id', 'nombre', 'calle', 'numero', 'colinia', 'ciudad', 'estado','activo','telefono','descripcion','foto','horario'];
 }
